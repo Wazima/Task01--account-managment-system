@@ -17,9 +17,14 @@ private
 	int additional_transaction_charges=10;
 	Calendar c;	//to get time and date
 	double interest;
+	double bal[]= {70000,60000,800000,500000};
 	
 	
 public
+
+	Account() {
+	
+}
 
  Account(String name, String address, int phone_no, int account_no, double balance) {
 	super(name, address, phone_no, account_no);
@@ -39,9 +44,12 @@ public
 		System.out.println("Current balance : " + balance);
 	}
 	
-
+	public double getbalance(int index) {
+		balance=bal[index];
+		return bal[index];
+	}
 	
-	public void makeWithdrawal(double withdraw_amount) {
+	public Boolean makeWithdrawal(double withdraw_amount) {
 		withdraw=withdraw_amount;
 		if(Account_Type== 2)	//2. checking account
 		{
@@ -54,9 +62,6 @@ public
 			}
 			
 		}
-		
-		
-		
 		if(Account_Type == 1)	//1. savings account
 		{
 			if (withdraw_amount > balance)
@@ -70,6 +75,11 @@ public
 				balance=balance-withdraw_amount;
 			}
 		
+		if(withdraw_amount > getbalance(0))
+		{
+			return false;
+		}
+		else return true;
 	}
 	
 	public void printStatement(int account_no) {
@@ -114,7 +124,7 @@ public
 		
 	}
 	
-	public void transferAmount(int id,double trans_amount) {
+	public Boolean transferAmount(int id,double trans_amount) {
 		
 		if(Account_Type== 2)	//2. checking account
 		{
@@ -131,21 +141,28 @@ public
 		transfer_amount=trans_amount;
 		balance=balance-trans_amount;
 		c= Calendar.getInstance();
+		
+		if(id==n.getacc(1))
+		{
+			return true;
+		}
+		else return false;
 	}
 	
-	public void calculateZakat() {	//only for savings account
+	public double calculateZakat(double amount) {	//only for savings account
 		
 		if(balance>20000)
 		{
 			zakat=(balance*2.5)/100;
 			balance=balance-zakat;
-			System.out.println("Zakat Deducted ~ " + zakat);
+		//	System.out.println("Zakat Deducted ~ " + zakat);
 			
 		}
 		else {
 			System.out.println("Zakat can only be calculated on Current Balance more than 20,000.");
 		}
 		
+		return zakat;
 	}
 	
 	public void calculateInterest() {		//calculating for per year
@@ -174,4 +191,6 @@ public
 			System.out.println("Transfer Deducton ~ " + transfer_amount);
 		
 	}
+	
+
 }

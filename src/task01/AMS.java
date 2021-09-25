@@ -179,7 +179,7 @@ public class AMS {
 				case 6:{
 					if(account_type_input==1)
 					{
-						user.calculateZakat();
+						//user.calculateZakat();
 					}
 					else
 					{

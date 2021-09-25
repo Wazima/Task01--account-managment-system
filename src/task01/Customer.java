@@ -6,9 +6,13 @@ public class Customer {
 		String address;
 		int phone_no;
 		int account_no;
+		int acc[]= {123,456,789,951};
 
-		
-		
+		public Customer() {
+			
+			
+			
+		}
 		
 		
 		public Customer(String name, String address, int phone_no, int account_no) {
@@ -41,5 +45,14 @@ public class Customer {
 			System.out.println("Account No. ~ " + account_no);
 		}
 
+		public String get_name(String nam)
+		{
+			return name=nam;
+		}
+		
+		public int getacc(int index) {
+			   
+				return acc[index];
+		}
 
 }
