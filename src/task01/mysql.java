@@ -5,7 +5,7 @@ import com.sun.jdi.connect.spi.Connection;
 
 public class mysql {
 
-	public  void sqlDataEntry(String name, int pin, String account_type,float balance) {
+	public  void sqlDataEntry(String name, int pin, String account_type,double balance) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
@@ -19,7 +19,7 @@ public class mysql {
 			stat.setString(1,name);
 			stat.setInt(1,pin);
 			stat.setString(1,account_type);
-			stat.setFloat(1,balance);
+			stat.setDouble(1,balance);
 			
 			
 			con.close();

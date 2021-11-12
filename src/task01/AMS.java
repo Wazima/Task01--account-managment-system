@@ -42,12 +42,25 @@ public class AMS {
 		Account user=new Account(Name,Address,ph_no,acc_no,balance);
 		Customer obj1=new Customer(Name,Address,ph_no,acc_no);
 		
+		System.out.println("Select the option to store your database:\n1. File\n2. Oracle\n3. MySql");
+		Scanner user_input= new Scanner(System.in);
+		int choice=user_input.nextInt();
+		
+		switch(choice)
+		{
+		case 3:
+		{
+			mysql ms=new mysql();
+			ms.sqlDataEntry(Name_arr[0],acc[0],"Current account",bal[0]);
+		}
+		}
+		
 				//System.out.println(user_input.nextLine());
 				System.out.println("Press 1. to create a new account ~ ");
 				System.out.println("Press 2. to access your account ~ ");
 				System.out.println("Press 3. to close your account ~ ");
-				Scanner user_input= new Scanner(System.in);
-				int choice=user_input.nextInt();
+				user_input= new Scanner(System.in);
+				choice=user_input.nextInt();
 				
 				
 				int i=obj1.account_no;
